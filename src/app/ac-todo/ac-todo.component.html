@@ -1,0 +1,16 @@
+<section class="todoapp">
+    <ac-list-header>
+        <ac-list-title title="Ng Todos"></ac-list-title>
+        <ac-list-input (itemAdded)="list.addItem($event)" placeholder="What needs to be done?"></ac-list-input>
+    </ac-list-header>
+
+    <ac-list-main>
+        <ac-list-toggle></ac-list-toggle>
+        <ac-list-items [items]="list.items"></ac-list-items>
+    </ac-list-main>
+
+    <ac-list-footer>
+        <ac-list-counter [count]="list.countRemains()"></ac-list-counter>
+        <ac-list-clear-btn (clearCompleted)="list.removeDone()"></ac-list-clear-btn>
+    </ac-list-footer>
+</section>

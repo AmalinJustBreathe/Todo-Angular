@@ -1,0 +1,22 @@
+<li [ngClass]  = "{ 'completed' : item.completed, 'editing' : editMode }"
+    (dblclick) = "this.editMode = !this.editMode;"   
+    >
+
+  <div class = "view">
+    <input class      = "toggle"
+           type       = "checkbox"
+           [checked]  = "item.completed"
+           (change)   = "item.completed = !item.completed;"
+           >
+
+    <label>{{ item.title }}</label>
+
+    <button (click)="list.removeItem(item)" class="destroy"></button>
+
+  </div>
+
+  <input class="edit"
+         [value]="item.title"
+         (keydown.enter)="updateItem($event.target.value)">
+
+</li>
