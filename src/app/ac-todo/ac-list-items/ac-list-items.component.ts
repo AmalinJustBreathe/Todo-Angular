@@ -1,6 +1,11 @@
-import { Component, Input,  } from '@angular/core';
-import { ListService} from "../list.service";
+import { Component, Input, Output, EventEmitter } from '@angular/core';
+import { Store } from '@ngrx/store';
+
+import * as listActions from '../list-actions';
+import { State }  from '../list-reducer';
 import { Item } from '../item.interface';
+
+
 
 @Component({
   selector: 'ac-list-items',
@@ -18,7 +23,7 @@ import { Item } from '../item.interface';
   `]
 })
 export class AcListItemsComponent {
-
+  
   @Input() items: Item[];
 
 }

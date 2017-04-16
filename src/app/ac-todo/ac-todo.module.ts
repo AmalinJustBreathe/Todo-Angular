@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+
 import { TodoComponent } from './ac-todo.component';
 import { AcListHeaderComponent } from './ac-list-header/ac-list-header.component';
 import { AcListMainComponent } from './ac-list-main/ac-list-main.component';
@@ -11,14 +12,18 @@ import { AcListCounterComponent } from './ac-list-counter/ac-list-counter.compon
 import { AcListClearBtnComponent } from './ac-list-clear-btn/ac-list-clear-btn.component';
 import { AcListTitleComponent } from './ac-list-title/ac-list-title.component';
 import { AcListItemComponent } from './ac-list-item/ac-list-item.component';
-import { ListService } from "./list.service";
+
+import { StoreModule } from '@ngrx/store';
+import * as listReducer from './list-reducer';
 
 @NgModule({
   imports: [
-    CommonModule
+    CommonModule,
+    StoreModule.provideStore(listReducer.reducer)
   ],
-  providers: [ListService],
-  declarations: [TodoComponent,
+  providers: [],
+  declarations: [
+    TodoComponent,
     AcListHeaderComponent,
     AcListMainComponent,
     AcListFooterComponent,
@@ -28,7 +33,8 @@ import { ListService } from "./list.service";
     AcListCounterComponent,
     AcListClearBtnComponent,
     AcListTitleComponent,
-    AcListItemComponent],
+    AcListItemComponent
+  ],
   exports: [TodoComponent]
 
 })

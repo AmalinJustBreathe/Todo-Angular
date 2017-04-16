@@ -6,17 +6,16 @@
     <input class      = "toggle"
            type       = "checkbox"
            [checked]  = "item.completed"
-           (change)   = "item.completed = !item.completed;"
+           (change)   = "itemCompleted()"
            >
 
     <label>{{ item.title }}</label>
 
-    <button (click)="list.removeItem(item)" class="destroy"></button>
+    <button (click)="removeItem()" class="destroy"></button>
 
   </div>
 
   <input class="edit"
          [value]="item.title"
          (keydown.enter)="updateItem($event.target.value)">
-
 </li>

@@ -1,5 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { ListService } from "../list.service";
+import { Store } from '@ngrx/store';
+
+import { State } from '../list-reducer';
+import * as listActions from '../list-actions';
+import { Item } from '../item.interface';
 
 @Component({
   selector: 'ac-list-toggle',
@@ -10,17 +14,13 @@ import { ListService } from "../list.service";
   `,
   styleUrls: ['ac-list-toggle.component.css']
 })
-export class AcListToggleComponent implements OnInit {
+export class AcListToggleComponent {
 
-  constructor(private list: ListService) {
+  constructor(private store: Store<State>) {
   }
 
-  ngOnInit() {
-  }
-
-  toggleAll(val) {
-    console.log(val.checked);
-    this.list.toggleAll(val.checked);
+  toggleAll(markAll) {
+    this.store.dispatch(new listActions.ToggleAllCompletedAction(markAll.checked));
   }
 
 }
